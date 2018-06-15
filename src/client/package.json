@@ -1,0 +1,42 @@
+{
+  "name": "@rapid-build-ui/rb-radios",
+  "version": "0.0.0",
+  "main": "scripts/rb-radios.js",
+  "description": "Rapid Build UI Web Component: rb-radios",
+  "license": "MIT",
+  "engines": {
+    "node": "8.x",
+    "npm": "6.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "contributors": [
+    {
+      "name": "Judd Younce",
+      "email": "jyounce@yahoo.com",
+      "url": "https://github.com/jyounce"
+    },
+    {
+      "name": "Yevgeniy Okun",
+      "email": "yevgeniyokun@gmail.com",
+      "url": "https://github.com/yokun"
+    },
+    {
+      "name": "Alina Younce",
+      "email": "crisan_alina2003@yahoo.com",
+      "url": "https://github.com/ayounce"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rapid-build-ui/rb-radios"
+  },
+  "bugs": {
+    "url": "https://github.com/rapid-build-ui/rb-radios/issues"
+  },
+  "flat": true,
+  "dependencies": {
+    "@polymer/polymer": "^3"
+  }
+}
