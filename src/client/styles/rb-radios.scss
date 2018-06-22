@@ -5,6 +5,10 @@
 @import 'sass/functions.scss';
 @import 'sass/variables.scss';
 
+
 /* The Component
  ****************/
-
+.rb-radio {
+	@import 'main/common.scss';
+	@import 'main/label.scss';
+}
