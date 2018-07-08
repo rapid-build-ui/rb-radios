@@ -1,0 +1,21 @@
+/**********
+ * OPTIONS
+ **********/
+&.inline {
+	display: inline-flex;
+	margin-right: remy(25);
+}
+
+&.right {
+	align-items: flex-end;
+	.radios-wrap {
+		align-items: flex-end;
+	}
+	.radio-label {
+		flex-direction: row-reverse;
+	}
+	.radio {
+		margin-right: 0;
+		margin-left: remy(6);
+	}
+}

@@ -1,0 +1,72 @@
+/*********
+ * RADIOS
+ *********/
+.radios-wrap {
+	display: flex;
+	align-items: baseline;
+	flex-direction: column;
+}
+
+/* Common
+ *********/
+.radio {
+	$radius: 50%;
+	position: relative;
+	top: remy(1);
+	margin-right: remy(6);
+	border-radius: $radius;
+	border: 1px solid mapGet($formControlColors, borders, radio, default);
+	&::before,
+	&::after {
+		opacity: 0;
+		position: absolute;
+		border-radius: $radius;
+		transition: all .3s;
+		content: '';
+	}
+}
+
+/* Dimensions
+ *************/
+.radio {
+	$dim: 16px;
+	width: $dim;
+	height: $dim;
+	&::before { // outer circle
+		$dim: 180%;
+		$coords: -41%;
+		top: $coords;
+		left: $coords;
+		width: $dim;
+		height: $dim;
+	}
+	&::after { // the dot
+		$dim: 50%;
+		$coords: 25%;
+		top: $coords;
+		left: $coords;
+		width: $dim;
+		height: $dim;
+	}
+}
+
+/* States
+ *********/
+.radio-label {
+	&.active {
+		font-weight: 400;
+		letter-spacing: .025em;
+	}
+	&:hover .radio,
+	&.active .radio {
+		border-color: mapGet($formControlColors, borders, active, default);
+	}
+	&:hover .radio::before {
+		opacity: .1;
+		background-color: mapGet($formControlColors, bg, active, default);
+	}
+	&.active .radio::after {
+		opacity: 1;
+		background-color: mapGet($formControlColors, bg, active, default);
+	}
+}
