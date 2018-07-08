@@ -1,15 +1,34 @@
+<div
+	disabled?="${props.disabled}"
+	class$="
+		rb-radios
+		${props.right ? 'right' : ''}
+		${props.inline ? 'inline' : ''}
+		${props.stacked ? 'stacked' : ''}
+		${props._valid ? 'valid' : 'invalid'}
+	">
 
-<template is="dom-repeat" items="{{data}}">
-	<div
-		class="rb-radio"
-		on-click="_handleClick"
-		value$="[[item]]">
-		<div class="inner-circle-container">
-			<div class="inner-circle"></div>
-			<div class="dot"></div>
-		</div>
-		<label class="caption">[[item]]</label>
+	${props.label
+		? html`<label class="radios-label">${props.label}</label>`
+		: null
+	}
+
+	<div class="radios-wrap">
+		${props.data.map((val, i) => html`
+			<label class$="radio-label ${props.value === val ? 'active' : ''}">
+				<input
+					checked?="${props.value === val}"
+					on-change="${this._onchange.bind(this, val)}"
+					hidden type="radio" name="radios" value="${val}">
+				<b class="radio"></b> ${val}
+			</label>
+		`)}
 	</div>
-</template>
+
+	${props._eMsg || props.subtext
+		? html`<span class="subtext">${props._eMsg || props.subtext}</span>`
+		: null
+	}
+</div>
 
 <link rel="stylesheet" href="../styles/rb-radios.css">
