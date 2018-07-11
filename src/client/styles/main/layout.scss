@@ -19,3 +19,13 @@
 		margin-left: remy(6);
 	}
 }
+
+&.horizontal {
+	flex-direction: row;
+	.radios-wrap {
+		flex-direction: row;
+	}
+	.radio-label {
+		margin-left: remy(10)
+	}
+}

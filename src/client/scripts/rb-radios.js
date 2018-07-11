@@ -23,6 +23,7 @@ export class RbRadios extends withComponent(withRenderer()) {
 		return {
 			data: props.array,
 			disabled: props.boolean,
+			horizontal: props.boolean,
 			inline: props.boolean,
 			label: props.string, // radios label
 			labelField: props.string, // TODO: radio label
