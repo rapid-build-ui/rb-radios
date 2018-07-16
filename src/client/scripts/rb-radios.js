@@ -21,12 +21,11 @@ export class RbRadios extends withComponent(withRenderer()) {
 	 *************/
 	static get props() {
 		return {
-			data: props.array,
 			disabled: props.boolean,
 			horizontal: props.boolean,
 			inline: props.boolean,
 			label: props.string, // radios label
-			labelField: props.string, // TODO: radio label
+			labelProp: props.string, // TODO: radio label
 			right: props.boolean,
 			stacked: props.boolean, // TODO: change default to unstacked
 			subtext: props.string,
@@ -34,9 +33,18 @@ export class RbRadios extends withComponent(withRenderer()) {
 				// TODO: support for custom functions
 				deserialize(val) { return eval(val); }
 			}),
+			data: Object.assign({}, props.array, {
+				deserialize(val) { // :array
+					if (type.is.array(val)) return val;
+					if (!type.is.string(val)) return val;
+					val = val.trim();
+					if (/^\[[^]*\]$/.test(val)) return JSON.parse(val);
+					return val;
+				}
+			}),
 			value: Object.assign({}, props.any, {
 				deserialize(val) { // :boolean | string | object
-					val = val.trim();
+					val = type.is.string(val) ? val.trim() : val;
 					let newVal;
 					switch (true) {
 						case /^(?:true|false)$/i.test(val): // boolean
@@ -48,7 +56,6 @@ export class RbRadios extends withComponent(withRenderer()) {
 						default:  // string
 							newVal = val;
 					}
-					// console.log('VALUE:', { oldVal: val, newVal });
 					return newVal;
 				}
 			}),

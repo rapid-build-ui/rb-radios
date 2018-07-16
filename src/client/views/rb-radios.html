@@ -16,12 +16,18 @@
 
 	<div class="radios-wrap">
 		${props.data.map((val, i) => html`
-			<label class$="radio-label ${props.value === val ? 'active' : ''}">
+			<label class$="radio-label ${JSON.stringify(props.value) === JSON.stringify(val) ? 'active' : ''}">
 				<input
-					checked?="${props.value === val}"
+					checked?="${JSON.stringify(props.value) === JSON.stringify(val)}"
 					on-change="${this._onchange.bind(this, val)}"
 					hidden type="radio" name="radios" value="${val}">
-				<b class="radio"></b> ${val}
+				<b class="radio"></b>
+				${props.labelProp
+					? val[props.labelProp]
+					: typeof val === 'object'
+						? JSON.stringify(val)
+						: val
+				}
 			</label>
 		`)}
 	</div>
