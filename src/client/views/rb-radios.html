@@ -18,9 +18,10 @@
 		${props.data.map((val, i) => html`
 			<label class$="radio-label ${JSON.stringify(props.value) === JSON.stringify(val) ? 'active' : ''}">
 				<input
+					hidden type="radio" name="radios" value="${val}"
 					checked?="${JSON.stringify(props.value) === JSON.stringify(val)}"
 					on-click="${this._onclick.bind(this, val)}"
-					hidden type="radio" name="radios" value="${val}">
+					on-change="${this._onchange.bind(this, val)}">
 				<b class="radio"></b>
 				${props.labelProp
 					? val[props.labelProp]

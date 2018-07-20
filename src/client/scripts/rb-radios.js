@@ -80,13 +80,15 @@ export class RbRadios extends withComponent(withRenderer()) {
 
 	/* Event Handlers
 	 *****************/
-	_onclick(val) {
-		if (this.toggle && this.value === val){
-			this.value = undefined;
-			return;
-		}
+	_onchange(val) {
 		this.value = val;
+	}
 
+	_onclick(val) {
+		if (!this.toggle) return;
+		if (this.value !== val) return;
+		this.value = undefined;
+		this.shadowRoot.querySelector('input[checked]').checked = false;
 	}
 
 	/* Template
