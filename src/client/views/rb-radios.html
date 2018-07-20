@@ -19,7 +19,7 @@
 			<label class$="radio-label ${JSON.stringify(props.value) === JSON.stringify(val) ? 'active' : ''}">
 				<input
 					checked?="${JSON.stringify(props.value) === JSON.stringify(val)}"
-					on-change="${this._onchange.bind(this, val)}"
+					on-click="${this._onclick.bind(this, val)}"
 					hidden type="radio" name="radios" value="${val}">
 				<b class="radio"></b>
 				${props.labelProp

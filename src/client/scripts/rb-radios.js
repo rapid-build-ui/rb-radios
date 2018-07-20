@@ -29,6 +29,7 @@ export class RbRadios extends withComponent(withRenderer()) {
 			right: props.boolean,
 			stacked: props.boolean, // TODO: change default to unstacked
 			subtext: props.string,
+			toggle: props.boolean,
 			validation: Object.assign({}, props.array, {
 				// TODO: support for custom functions
 				deserialize(val) { return eval(val); }
@@ -79,8 +80,13 @@ export class RbRadios extends withComponent(withRenderer()) {
 
 	/* Event Handlers
 	 *****************/
-	_onchange(val) {
+	_onclick(val) {
+		if (this.toggle && this.value === val){
+			this.value = undefined;
+			return;
+		}
 		this.value = val;
+
 	}
 
 	/* Template
