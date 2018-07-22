@@ -17,7 +17,7 @@
 	<div class="radios-wrap">
 		${props.data.map((value, i) => html`
 			<label
-				tabindex="0"
+				tabindex$="${props.disabled ? -1 : 0}"
 				on-keypress="${this._onkeypress.bind(this, value)}"
 				class$="radio-label ${JSON.stringify(props.value) === JSON.stringify(value) ? 'active' : ''}">
 				<input
