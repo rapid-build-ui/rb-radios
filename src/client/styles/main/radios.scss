@@ -53,14 +53,19 @@
 /* States
  *********/
 .radio-label {
+	&:focus {
+		outline: none;
+	}
 	&.active {
 		font-weight: 400;
 		letter-spacing: .025em;
 	}
+	&:focus .radio,
 	&:hover .radio,
 	&.active .radio {
 		border-color: mapGet($formControlColors, borders, active, default);
 	}
+	&:focus .radio::before,
 	&:hover .radio::before {
 		opacity: .1;
 		background-color: mapGet($formControlColors, bg, active, default);

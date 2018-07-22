@@ -15,6 +15,9 @@ export class RbRadios extends withComponent(withRenderer()) {
 	constructor() {
 		super();
 		this.rbEvent = EventService.call(this);
+		this.state = {
+			guid: this.getGUID()
+		}
 	}
 
 	/* Properties
@@ -69,6 +72,34 @@ export class RbRadios extends withComponent(withRenderer()) {
 		}
 	}
 
+	/* Helpers
+	 **********/
+	getGUID() { // :string
+		return Math.round((Math.random() * 36 ** 12)).toString(36);
+	}
+	getKey(code) { // :string | void
+		if (!code) return;
+		return code.toLowerCase();
+	}
+	clearPrevCheckedRadio(value) { // needed for firefox
+		const radio = this.shadowRoot.querySelector('input[checked]');
+		if (radio && radio.value !== value) radio.checked = false;
+	}
+	valueChanged(value) { // boolean
+		const valueChanged = this.value !== value;
+		if (valueChanged) this.clearPrevCheckedRadio(value);
+		return valueChanged;
+	}
+	toggleValue() { // void (mutator: this.value and updates dom)
+		this.value = undefined;
+		this.shadowRoot.querySelector('input[checked]').checked = false;
+	}
+	setValue(value) { // void
+		const valueChanged = this.valueChanged(value);
+		if (valueChanged) return this.value = value;
+		if (this.toggle) return this.toggleValue();
+	}
+
 	/* Observer
 	 ***********/
 	updating(prevProps) { // :void
@@ -80,20 +111,23 @@ export class RbRadios extends withComponent(withRenderer()) {
 
 	/* Event Handlers
 	 *****************/
-	_onchange(val) {
-		this.value = val;
+	_onclick(value, evt) { // :void
+		this.setValue(value);
 	}
-
-	_onclick(val) {
-		if (!this.toggle) return;
-		if (this.value !== val) return;
-		this.value = undefined;
-		this.shadowRoot.querySelector('input[checked]').checked = false;
+	_onkeypress(value, evt) { // :void
+		const keys = ['enter','space'];
+		const key  = this.getKey(evt.code);
+		if (keys.indexOf(key) === -1) return;
+		evt.preventDefault(); // prevent space key from moving page down
+		this.setValue(value);
+		if (this.value === undefined) return;
+		// evt.currentTarget = label
+		evt.currentTarget.querySelector('input').checked = true;
 	}
 
 	/* Template
 	 ***********/
-	render({ props }) { // :string
+	render({ props, state }) { // :string
 		return html template;
 	}
 }

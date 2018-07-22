@@ -15,19 +15,25 @@
 	}
 
 	<div class="radios-wrap">
-		${props.data.map((val, i) => html`
-			<label class$="radio-label ${JSON.stringify(props.value) === JSON.stringify(val) ? 'active' : ''}">
+		${props.data.map((value, i) => html`
+			<label
+				tabindex="0"
+				on-keypress="${this._onkeypress.bind(this, value)}"
+				class$="radio-label ${JSON.stringify(props.value) === JSON.stringify(value) ? 'active' : ''}">
 				<input
-					hidden type="radio" name="radios" value="${val}"
-					checked?="${JSON.stringify(props.value) === JSON.stringify(val)}"
-					on-click="${this._onclick.bind(this, val)}"
-					on-change="${this._onchange.bind(this, val)}">
+					hidden
+					type="radio"
+					tabindex="-1"
+					value="${value}"
+					name="${state.guid}"
+					on-click="${this._onclick.bind(this, value)}"
+					checked?="${JSON.stringify(props.value) === JSON.stringify(value)}">
 				<b class="radio"></b>
 				${props.labelProp
-					? val[props.labelProp]
-					: typeof val === 'object'
-						? JSON.stringify(val)
-						: val
+					? value[props.labelProp]
+					: typeof value === 'object'
+						? JSON.stringify(value)
+						: value
 				}
 			</label>
 		`)}
