@@ -1,22 +1,18 @@
 /************
  * RB-RADIOS
  ************/
-import { props, withComponent } from '../../../skatejs/dist/esnext/index.js';
-import { html, withRenderer } from './renderer.js';
-import EventService from './event-service.js';
-import type from './type.js';
+import { props, html, RbBase } from '../../rb-base/scripts/rb-base.js';
+import type from '../../rb-base/scripts/type-service.js';
 import validate from './validation.js';
-import validationMessages from './validation-messages.js';
 import template from '../views/rb-radios.html';
 
-export class RbRadios extends withComponent(withRenderer()) {
+export class RbRadios extends RbBase() {
 	/* Lifecycle
 	 ************/
 	constructor() {
 		super();
-		this.rbEvent = EventService.call(this);
 		this.state = {
-			guid: this.getGUID()
+			guid: this.rb.guid.create(5)
 		}
 	}
 
@@ -74,9 +70,6 @@ export class RbRadios extends withComponent(withRenderer()) {
 
 	/* Helpers
 	 **********/
-	getGUID() { // :string
-		return Math.round((Math.random() * 36 ** 12)).toString(36);
-	}
 	getKey(code) { // :string | void
 		if (!code) return;
 		return code.toLowerCase();
@@ -104,7 +97,7 @@ export class RbRadios extends withComponent(withRenderer()) {
 	 ***********/
 	updating(prevProps) { // :void
 		if (prevProps.value === this.value) return;
-		this.rbEvent.emit(this, 'value-changed', {
+		this.rb.events.emit(this, 'value-changed', {
 			detail: { value: this.value }
 		});
 	}
