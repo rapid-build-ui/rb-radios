@@ -1,7 +1,7 @@
 /*********************
- * Validation Service
+ * VALIDATION SERVICE
  *********************/
-import type from './type.js';
+import type from '../../rb-base/scripts/type-service.js';
 import message from './validation-messages.js'
 
 /* Helpers (all return boolean)
