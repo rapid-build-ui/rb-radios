@@ -15,13 +15,26 @@
 	}
 
 	<div class="radios-wrap">
-		${props.data.map((val, i) => html`
-			<label class$="radio-label ${props.value === val ? 'active' : ''}">
+		${props.data.map((value, i) => html`
+			<label
+				tabindex$="${props.disabled ? -1 : 0}"
+				on-keypress="${this._onkeypress.bind(this, value)}"
+				class$="radio-label ${JSON.stringify(props.value) === JSON.stringify(value) ? 'active' : ''}">
 				<input
-					checked?="${props.value === val}"
-					on-change="${this._onchange.bind(this, val)}"
-					hidden type="radio" name="radios" value="${val}">
-				<b class="radio"></b> ${val}
+					hidden
+					type="radio"
+					tabindex="-1"
+					value="${value}"
+					name="${state.guid}"
+					on-click="${this._onclick.bind(this, value)}"
+					checked?="${JSON.stringify(props.value) === JSON.stringify(value)}">
+				<b class="radio"></b>
+				${props.labelProp
+					? value[props.labelProp]
+					: typeof value === 'object'
+						? JSON.stringify(value)
+						: value
+				}
 			</label>
 		`)}
 	</div>
