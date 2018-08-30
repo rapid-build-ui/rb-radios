@@ -1,3 +1,25 @@
+## [0.0.3](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.2...v0.0.3) (2018-08-30)
+
+
+### Bug Fixes
+
+* **dimensions:** ensure radio is always perfectly round ([77b4994](https://github.com/rapid-build-ui/rb-radios/commit/77b4994))
+* **disabled:** prevent keyboard navigation when disabled ([4f94a8f](https://github.com/rapid-build-ui/rb-radios/commit/4f94a8f))
+* **radios:** from being unselectable and add keyboard navigation ([1b8094f](https://github.com/rapid-build-ui/rb-radios/commit/1b8094f))
+
+
+### Features
+
+* **api:** add support for data to be array of objects ([6a5ab18](https://github.com/rapid-build-ui/rb-radios/commit/6a5ab18))
+* **new api:** add toggle option for deselecting the value ([7390cff](https://github.com/rapid-build-ui/rb-radios/commit/7390cff))
+
+
+### Dependency Updates
+
+* **rb-base:** replace deps lit-html and skatejs with @rapid-build-ui/rb-base and make corresponding updates ([e57b4c4](https://github.com/rapid-build-ui/rb-radios/commit/e57b4c4))
+
+
+
 ## [0.0.2](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.1...v0.0.2) (2018-07-11)
 
 
