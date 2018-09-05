@@ -1,6 +1,6 @@
 <div
-	disabled?="${props.disabled}"
-	class$="
+	?disabled="${props.disabled}"
+	class="
 		rb-radios
 		${props.horizontal ? 'horizontal' : ''}
 		${props.inline ? 'inline' : ''}
@@ -17,17 +17,17 @@
 	<div class="radios-wrap">
 		${props.data.map((value, i) => html`
 			<label
-				tabindex$="${props.disabled ? -1 : 0}"
-				on-keypress="${this._onkeypress.bind(this, value)}"
-				class$="radio-label ${JSON.stringify(props.value) === JSON.stringify(value) ? 'active' : ''}">
+				tabindex="${props.disabled ? -1 : 0}"
+				@keypress="${this._onkeypress.bind(this, value)}"
+				class="radio-label ${JSON.stringify(props.value) === JSON.stringify(value) ? 'active' : ''}">
 				<input
 					hidden
 					type="radio"
 					tabindex="-1"
-					value="${value}"
+					.value="${value}"
 					name="${state.guid}"
-					on-click="${this._onclick.bind(this, value)}"
-					checked?="${JSON.stringify(props.value) === JSON.stringify(value)}">
+					@click="${this._onclick.bind(this, value)}"
+					?checked="${JSON.stringify(props.value) === JSON.stringify(value)}">
 				<b class="radio"></b>
 				${props.labelProp
 					? value[props.labelProp]
