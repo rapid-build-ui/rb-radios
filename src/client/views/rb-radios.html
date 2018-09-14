@@ -24,8 +24,8 @@
 					hidden
 					type="radio"
 					tabindex="-1"
-					.value="${value}"
-					name="${state.guid}"
+					value="${props.value}"
+					name="${props.name}"
 					@click="${this._onclick.bind(this, value)}"
 					?checked="${JSON.stringify(props.value) === JSON.stringify(value)}">
 				<b class="radio"></b>
