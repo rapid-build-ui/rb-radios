@@ -7,6 +7,38 @@ import Type from '../../rb-base/scripts/type-service.js';
 import template from '../views/rb-radios.html';
 
 export class RbRadios extends FormControl(RbBase()) {
+	connectedCallback() { // :void
+		super.connectedCallback && super.connectedCallback();
+		this.validateValue()
+	}
+
+	validateValue() { // :void
+		if (!this.data.length || !this.value) return;
+
+		switch (true) {
+			case Type.is.string(this.data[0]):
+				if (this.data.indexOf(this.value) == -1)
+					this.value = undefined;
+				break;
+			case Type.is.object(this.data[0]):
+				if (!this.objectArrContains(this.data, this.value))
+					this.value = undefined;
+				break;
+		}
+
+	}
+
+	objectArrContains() { // :boolean
+		let isMatch = false;
+		for (const item of this.data) {
+			if (JSON.stringify(this.value) === JSON.stringify(item)) {
+				isMatch = true;
+				break;
+			};
+		}
+		return isMatch;
+	}
+
 	/* Properties
 	 *************/
 	static get props() {
@@ -31,7 +63,6 @@ export class RbRadios extends FormControl(RbBase()) {
 			}),
 			value: Object.assign({}, props.any, {
 				deserialize(val) { // :boolean | string | object
-					// console.log(props.data)
 					val = Type.is.string(val) ? val.trim() : val;
 					let newVal;
 					switch (true) {

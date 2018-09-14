@@ -24,12 +24,12 @@
 					hidden
 					type="radio"
 					tabindex="-1"
-					.value="${value}"
+					.value="${value}"xz
 					name="${props.name}"
 					@click="${this._onclick.bind(this, value)}"
 					?checked="${JSON.stringify(props.value) === JSON.stringify(value)}">
 				<b class="radio"></b>
-				${props.labelProp
+				${props.labelProp && typeof props.data[0] === 'object'
 					? value[props.labelProp]
 					: typeof value === 'object'
 						? JSON.stringify(value)
