@@ -1,3 +1,12 @@
+## [0.0.5](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.4...v0.0.5) (2018-09-14)
+
+
+* **bump deps:** ([1150066](https://github.com/rapid-build-ui/rb-radios/commit/1150066))
+	* **rb-base** to v0.0.3
+	* **form-control** to v0.0.2
+
+
+
 ## [0.0.4](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.3...v0.0.4) (2018-09-05)
 
 
