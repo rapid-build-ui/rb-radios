@@ -2,25 +2,16 @@
  * RB-RADIOS
  ************/
 import { props, html, RbBase } from '../../rb-base/scripts/rb-base.js';
-import type from '../../rb-base/scripts/type-service.js';
-import validate from './validation.js';
+import FormControl from '../../form-control/scripts/form-control.js';
+import Type from '../../rb-base/scripts/type-service.js';
 import template from '../views/rb-radios.html';
 
-export class RbRadios extends RbBase() {
-	/* Lifecycle
-	 ************/
-	constructor() {
-		super();
-		this.state = {
-			guid: this.rb.guid.create(5)
-		}
-	}
-
+export class RbRadios extends FormControl(RbBase()) {
 	/* Properties
 	 *************/
 	static get props() {
 		return {
-			disabled: props.boolean,
+			...super.props,
 			horizontal: props.boolean,
 			inline: props.boolean,
 			label: props.string, // radios label
@@ -29,14 +20,10 @@ export class RbRadios extends RbBase() {
 			stacked: props.boolean, // TODO: change default to unstacked
 			subtext: props.string,
 			toggle: props.boolean,
-			validation: Object.assign({}, props.array, {
-				// TODO: support for custom functions
-				deserialize(val) { return eval(val); }
-			}),
 			data: Object.assign({}, props.array, {
 				deserialize(val) { // :array
-					if (type.is.array(val)) return val;
-					if (!type.is.string(val)) return val;
+					if (Type.is.array(val)) return val;
+					if (!Type.is.string(val)) return val;
 					val = val.trim();
 					if (/^\[[^]*\]$/.test(val)) return JSON.parse(val);
 					return val;
@@ -44,7 +31,8 @@ export class RbRadios extends RbBase() {
 			}),
 			value: Object.assign({}, props.any, {
 				deserialize(val) { // :boolean | string | object
-					val = type.is.string(val) ? val.trim() : val;
+					// console.log(props.data)
+					val = Type.is.string(val) ? val.trim() : val;
 					let newVal;
 					switch (true) {
 						case /^(?:true|false)$/i.test(val): // boolean
@@ -59,12 +47,7 @@ export class RbRadios extends RbBase() {
 					return newVal;
 				}
 			}),
-			// TODO
-			_eMsg: props.string,
-			_dirty: props.boolean,
-			_valid: Object.assign({}, props.boolean, {
-				default: true
-			})
+			_dirty: props.boolean
 		}
 	}
 
@@ -83,13 +66,20 @@ export class RbRadios extends RbBase() {
 		if (valueChanged) this.clearPrevCheckedRadio(value);
 		return valueChanged;
 	}
-	toggleValue() { // void (mutator: this.value and updates dom)
+	async toggleValue() { // void (mutator: this.value and updates dom)
 		this.value = undefined;
 		this.shadowRoot.querySelector('input[checked]').checked = false;
+		await this.validate();
 	}
-	setValue(value) { // void
+	async setValue(value) { // void
 		const valueChanged = this.valueChanged(value);
-		if (valueChanged) return this.value = value;
+		if (valueChanged) {
+			this.value = value;
+			await this.validate();
+
+			return
+		}
+
 		if (this.toggle) return this.toggleValue();
 	}
 
