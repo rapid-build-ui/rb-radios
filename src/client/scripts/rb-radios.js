@@ -7,36 +7,11 @@ import Type from '../../rb-base/scripts/type-service.js';
 import template from '../views/rb-radios.html';
 
 export class RbRadios extends FormControl(RbBase()) {
-	connectedCallback() { // :void
-		super.connectedCallback && super.connectedCallback();
-		this.validateValue()
-	}
-
-	validateValue() { // :void
-		if (!this.data.length || !this.value) return;
-
-		switch (true) {
-			case Type.is.string(this.data[0]):
-				if (this.data.indexOf(this.value) == -1)
-					this.value = undefined;
-				break;
-			case Type.is.object(this.data[0]):
-				if (!this.objectArrContains(this.data, this.value))
-					this.value = undefined;
-				break;
-		}
-
-	}
-
-	objectArrContains() { // :boolean
-		let isMatch = false;
-		for (const item of this.data) {
-			if (JSON.stringify(this.value) === JSON.stringify(item)) {
-				isMatch = true;
-				break;
-			};
-		}
-		return isMatch;
+	/* Lifecycle
+	 ************/
+	viewReady() { // :void
+		super.viewReady && super.viewReady();
+		this.validateValue();
 	}
 
 	/* Properties
@@ -82,6 +57,33 @@ export class RbRadios extends FormControl(RbBase()) {
 		}
 	}
 
+	/* Value Helpers
+	 ****************/
+	validateValue() { // :void
+		if (!this.data.length || !this.value) return;
+
+		switch (true) {
+			case Type.is.string(this.data[0]):
+				if (this.data.indexOf(this.value) == -1)
+					this.value = undefined;
+				break;
+			case Type.is.object(this.data[0]):
+				if (!this.objectArrayContains(this.data, this.value))
+					this.value = undefined;
+				break;
+		}
+	}
+	objectArrayContains() { // :boolean
+		let isMatch = false;
+		for (const item of this.data) {
+			if (JSON.stringify(this.value) === JSON.stringify(item)) {
+				isMatch = true;
+				break;
+			};
+		}
+		return isMatch;
+	}
+
 	/* Helpers
 	 **********/
 	getKey(code) { // :string | void
@@ -92,7 +94,7 @@ export class RbRadios extends FormControl(RbBase()) {
 		const radio = this.shadowRoot.querySelector('input[checked]');
 		if (radio && radio.value !== value) radio.checked = false;
 	}
-	valueChanged(value) { // boolean
+	valueChanged(value) { // :boolean
 		const valueChanged = this.value !== value;
 		if (valueChanged) this.clearPrevCheckedRadio(value);
 		return valueChanged;
@@ -102,13 +104,12 @@ export class RbRadios extends FormControl(RbBase()) {
 		this.shadowRoot.querySelector('input[checked]').checked = false;
 		await this.validate();
 	}
-	async setValue(value) { // void
+	async setValue(value) { // :void
 		const valueChanged = this.valueChanged(value);
 		if (valueChanged) {
 			this.value = value;
 			await this.validate();
-
-			return
+			return;
 		}
 
 		if (this.toggle) return this.toggleValue();
