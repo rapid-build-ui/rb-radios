@@ -24,7 +24,7 @@ export class RbRadios extends FormControl(RbBase()) {
 			horizontal: props.boolean,
 			inline: props.boolean,
 			label: props.string, // radios label
-			labelProp: props.string, // TODO: radio label
+			labelKey: props.string, // radio label
 			right: props.boolean,
 			stacked: props.boolean, // TODO: change default to unstacked
 			subtext: props.string,

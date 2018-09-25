@@ -29,8 +29,8 @@
 					@click="${this._onclick.bind(this, value)}"
 					?checked="${JSON.stringify(props.value) === JSON.stringify(value)}">
 				<b class="radio"></b>
-				${props.labelProp && typeof props.data[0] === 'object'
-					? value[props.labelProp]
+				${props.labelKey && typeof props.data[0] === 'object'
+					? value[props.labelKey]
 					: typeof value === 'object'
 						? JSON.stringify(value)
 						: value
