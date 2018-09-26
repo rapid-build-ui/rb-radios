@@ -1,3 +1,32 @@
+## [0.0.6](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.5...v0.0.6) (2018-09-26)
+
+
+### Features
+
+* **validation:**
+	* add validation ([e95dcdb](https://github.com/rapid-build-ui/rb-radios/commit/e95dcdb))
+	* set form control and focus element for validation to be generic ([961fea9](https://github.com/rapid-build-ui/rb-radios/commit/961fea9))
+
+
+### Dependencies
+
+* **bump:** deps form-control v0.0.3 and rb-base v0.0.4 ([e6d1aa5](https://github.com/rapid-build-ui/rb-radios/commit/e6d1aa5))
+
+
+### BREAKING CHANGES
+
+* **api option:** change label-prop to label-key ([b464657](https://github.com/rapid-build-ui/rb-radios/commit/b464657))
+
+To migrate the code follow the example below:
+
+**Before:**  
+label-prop="name"
+
+**Now:**  
+label-key="name"
+
+
+
 ## [0.0.5](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.4...v0.0.5) (2018-09-14)
 
 
@@ -10,7 +39,7 @@
 ## [0.0.4](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.3...v0.0.4) (2018-09-05)
 
 
-### Dependency Updates
+### Dependencies
 
 * **rb-base:** bump to v0.0.2 ([d9155cc](https://github.com/rapid-build-ui/rb-radios/commit/d9155cc))
 
@@ -32,7 +61,7 @@
 * **new api:** add toggle option for deselecting the value ([7390cff](https://github.com/rapid-build-ui/rb-radios/commit/7390cff))
 
 
-### Dependency Updates
+### Dependencies
 
 * **rb-base:** replace deps lit-html and skatejs with @rapid-build-ui/rb-base and make corresponding updates ([e57b4c4](https://github.com/rapid-build-ui/rb-radios/commit/e57b4c4))
 
