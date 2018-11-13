@@ -1,3 +1,12 @@
+## [0.0.7](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.6...v0.0.7) (2018-11-13)
+
+
+### Dependencies
+
+* **bump:** deps rb-base v0.0.5 and form-control v0.0.4 ([f4fad7a](https://github.com/rapid-build-ui/rb-radios/commit/f4fad7a))
+
+
+
 ## [0.0.6](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.5...v0.0.6) (2018-09-26)
 
 
