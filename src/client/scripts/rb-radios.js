@@ -54,8 +54,7 @@ export class RbRadios extends FormControl(RbBase()) {
 					}
 					return newVal;
 				}
-			}),
-			_dirty: props.boolean
+			})
 		}
 	}
 
