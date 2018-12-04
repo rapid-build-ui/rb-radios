@@ -12,7 +12,7 @@ export class RbRadios extends FormControl(RbBase()) {
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
 		this.validateValue();
-		this.rb.elms.focusElm = this.shadowRoot.querySelector('.radio-label');
+		this.rb.elms.focusElm = this.shadowRoot.querySelector('.sublabel');
 		this.rb.elms.formControl = this.shadowRoot.querySelector('input');
 	}
 
