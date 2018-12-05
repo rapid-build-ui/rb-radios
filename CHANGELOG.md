@@ -1,3 +1,19 @@
+## [0.0.8](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.7...v0.0.8) (2018-12-05)
+
+
+### Features
+
+* **bump:** deps rb-base v0.0.6 and form-control v0.0.5 ([bf897ba](https://github.com/rapid-build-ui/rb-radios/commit/bf897ba))
+* **hidden attribute:** display style that respects the hidden attribute ([44dea22](https://github.com/rapid-build-ui/rb-radios/commit/44dea22))
+* **styling:** enhancement ([3349312](https://github.com/rapid-build-ui/rb-radios/commit/3349312))
+
+
+### Performance Improvements
+
+* **css:** improve browser performance by adding css contain property ([1056b53](https://github.com/rapid-build-ui/rb-radios/commit/1056b53))
+
+
+
 ## [0.0.7](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.6...v0.0.7) (2018-11-13)
 
 
