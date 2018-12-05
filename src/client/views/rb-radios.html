@@ -1,7 +1,7 @@
 <div
 	?disabled="${props.disabled}"
 	class="
-		rb-radios
+		form-control
 		${props.horizontal ? 'horizontal' : ''}
 		${props.inline ? 'inline' : ''}
 		${props.right ? 'right' : ''}
@@ -10,16 +10,23 @@
 	">
 
 	${props.label
-		? html`<label class="radios-label">${props.label}</label>`
+		? html`<label class="label">${props.label}</label>`
 		: null
 	}
 
-	<div class="radios-wrap">
+	<div class="radios">
 		${props.data.map((value, i) => html`
 			<label
 				tabindex="${props.disabled ? -1 : 0}"
 				@keypress="${this._onkeypress.bind(this, value)}"
-				class="radio-label ${JSON.stringify(props.value) === JSON.stringify(value) ? 'active' : ''}">
+				class="sublabel ${JSON.stringify(props.value) === JSON.stringify(value) ? 'active' : ''}">
+				<b class="radio"></b>
+				${props.labelKey && typeof props.data[0] === 'object'
+					? value[props.labelKey]
+					: typeof value === 'object'
+						? JSON.stringify(value)
+						: value
+				}
 				<input
 					hidden
 					type="radio"
@@ -28,19 +35,12 @@
 					name="${props.name}"
 					@click="${this._onclick.bind(this, value)}"
 					?checked="${JSON.stringify(props.value) === JSON.stringify(value)}">
-				<b class="radio"></b>
-				${props.labelKey && typeof props.data[0] === 'object'
-					? value[props.labelKey]
-					: typeof value === 'object'
-						? JSON.stringify(value)
-						: value
-				}
 			</label>
 		`)}
 	</div>
 
 	${props._eMsg || props.subtext
-		? html`<span class="subtext">${props._eMsg || props.subtext}</span>`
+		? html`<p class="subtext">${props._eMsg || props.subtext}</p>`
 		: null
 	}
 </div>
