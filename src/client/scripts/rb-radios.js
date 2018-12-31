@@ -9,11 +9,17 @@ import template from '../views/rb-radios.html';
 export class RbRadios extends FormControl(RbBase()) {
 	/* Lifecycle
 	 ************/
+	connectedCallback() { // :void
+		super.connectedCallback && super.connectedCallback();
+		this._initSlotStates();
+	}
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
 		this.validateValue();
-		this.rb.elms.focusElm = this.shadowRoot.querySelector('.sublabel');
-		this.rb.elms.formControl = this.shadowRoot.querySelector('input');
+		Object.assign(this.rb.elms, {
+			focusElm:    this.shadowRoot.querySelector('.sublabel'),
+			formControl: this.shadowRoot.querySelector('input')
+		});
 	}
 
 	/* Properties
@@ -114,6 +120,27 @@ export class RbRadios extends FormControl(RbBase()) {
 		}
 
 		if (this.toggle) return this.toggleValue();
+	}
+
+	/* Slot Helpers (TODO: maybe move to base)
+	 ***************/
+	get _lightDomSlotNames() { // :{ [slotName]: boolean } (slots attr value)
+		const slotNames = {};
+		for (const child of this.children) { // (HTMLCollection readonly)
+			if (!child.slot) continue;
+			const name = child.slot.trim().toLowerCase();
+			slotNames[name] = true;
+		}
+		return slotNames;
+	}
+	_setSlotStates(slotNames={}) { // :void (mutator: this.state.slots)
+		if (!this.state) this.state = {};
+		if (!this.state.slots) this.state.slots = {};
+		Object.assign(this.state.slots, slotNames);
+	}
+	_initSlotStates() { // :void (run before initial render in connectedCallback)
+		const slotNames = this._lightDomSlotNames;
+		this._setSlotStates(slotNames);
 	}
 
 	/* Observer

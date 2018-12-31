@@ -4,13 +4,19 @@
 		form-control
 		${props.horizontal ? 'horizontal' : ''}
 		${props.inline ? 'inline' : ''}
+		${props.label && 'with-label'}
 		${props.right ? 'right' : ''}
 		${props.stacked ? 'stacked' : ''}
 		${props._valid ? 'valid' : 'invalid'}
 	">
 
-	${props.label
-		? html`<label class="label">${props.label}</label>`
+	${props.label || state.slots.popover
+		? html`
+			<label class="label">
+				<slot name="popover"></slot>
+				${props.label}
+			</label>
+		`
 		: null
 	}
 
