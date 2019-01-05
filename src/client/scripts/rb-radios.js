@@ -1,18 +1,15 @@
 /************
  * RB-RADIOS
  ************/
-import { props, html, RbBase } from '../../rb-base/scripts/rb-base.js';
-import FormControl from '../../form-control/scripts/form-control.js';
-import Type from '../../rb-base/scripts/type-service.js';
-import template from '../views/rb-radios.html';
+import { RbBase, props, html } from '../../rb-base/scripts/rb-base.js';
+import FormControl             from '../../form-control/scripts/form-control.js';
+import Type                    from '../../rb-base/scripts/public/services/type.js';
+import template                from '../views/rb-radios.html';
+import '../../rb-popover/scripts/rb-popover.js';
 
 export class RbRadios extends FormControl(RbBase()) {
 	/* Lifecycle
 	 ************/
-	connectedCallback() { // :void
-		super.connectedCallback && super.connectedCallback();
-		this._initSlotStates();
-	}
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
 		this.validateValue();
@@ -20,6 +17,7 @@ export class RbRadios extends FormControl(RbBase()) {
 			focusElm:    this.shadowRoot.querySelector('.sublabel'),
 			formControl: this.shadowRoot.querySelector('input')
 		});
+		this._initSlotStates(); // see rb-base: private/mixins/slot.js
 	}
 
 	/* Properties
@@ -120,27 +118,6 @@ export class RbRadios extends FormControl(RbBase()) {
 		}
 
 		if (this.toggle) return this.toggleValue();
-	}
-
-	/* Slot Helpers (TODO: maybe move to base)
-	 ***************/
-	get _lightDomSlotNames() { // :{ [slotName]: boolean } (slots attr value)
-		const slotNames = {};
-		for (const child of this.children) { // (HTMLCollection readonly)
-			if (!child.slot) continue;
-			const name = child.slot.trim().toLowerCase();
-			slotNames[name] = true;
-		}
-		return slotNames;
-	}
-	_setSlotStates(slotNames={}) { // :void (mutator: this.state.slots)
-		if (!this.state) this.state = {};
-		if (!this.state.slots) this.state.slots = {};
-		Object.assign(this.state.slots, slotNames);
-	}
-	_initSlotStates() { // :void (run before initial render in connectedCallback)
-		const slotNames = this._lightDomSlotNames;
-		this._setSlotStates(slotNames);
 	}
 
 	/* Observer
