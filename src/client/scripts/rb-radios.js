@@ -1,10 +1,11 @@
 /************
  * RB-RADIOS
  ************/
-import { props, html, RbBase } from '../../rb-base/scripts/rb-base.js';
-import FormControl from '../../form-control/scripts/form-control.js';
-import Type from '../../rb-base/scripts/type-service.js';
-import template from '../views/rb-radios.html';
+import { RbBase, props, html } from '../../rb-base/scripts/rb-base.js';
+import FormControl             from '../../form-control/scripts/form-control.js';
+import Type                    from '../../rb-base/scripts/public/services/type.js';
+import template                from '../views/rb-radios.html';
+import '../../rb-popover/scripts/rb-popover.js';
 
 export class RbRadios extends FormControl(RbBase()) {
 	/* Lifecycle
@@ -12,8 +13,11 @@ export class RbRadios extends FormControl(RbBase()) {
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
 		this.validateValue();
-		this.rb.elms.focusElm = this.shadowRoot.querySelector('.sublabel');
-		this.rb.elms.formControl = this.shadowRoot.querySelector('input');
+		Object.assign(this.rb.elms, {
+			focusElm:    this.shadowRoot.querySelector('.sublabel'),
+			formControl: this.shadowRoot.querySelector('input')
+		});
+		this._initSlotStates(); // see rb-base: private/mixins/slot.js
 	}
 
 	/* Properties

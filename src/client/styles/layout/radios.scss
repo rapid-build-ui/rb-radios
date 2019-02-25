@@ -12,8 +12,6 @@
  *********/
 .radio {
 	$radius: 50%;
-	position: relative;
-	top: -1px;
 	margin-right: 6px;
 	border-radius: $radius;
 	&::before, &::after {
@@ -28,6 +26,7 @@
 /* Dimensions
  *************/
 .radio {
+	position: relative;
 	$dim: 16px;
 	width: $dim;
 	height: $dim;
