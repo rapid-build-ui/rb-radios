@@ -1,3 +1,17 @@
+## [0.0.9](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.8...v0.0.9) (2019-02-25)
+
+
+### Features
+
+* **popover slot:** provide ability to conveniently add a rb-popover beside the label ([1df6ded](https://github.com/rapid-build-ui/rb-radios/commit/1df6ded))
+
+
+### Dependencies
+
+* **bump:** deps rb-base v0.0.7, form-control v0.0.6 and rb-popover v0.0.14 ([b45e720](https://github.com/rapid-build-ui/rb-radios/commit/b45e720))
+
+
+
 ## [0.0.8](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.7...v0.0.8) (2018-12-05)
 
 
