@@ -1,3 +1,15 @@
+## [0.0.10](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.9...v0.0.10) (2019-03-05)
+
+
+### Dependencies
+
+* **bump deps:** ([9c5b6ca](https://github.com/rapid-build-ui/rb-radios/commit/9c5b6ca))
+	* **form-control** to v0.0.7
+	* **rb-base** to v0.0.8
+	* **rb-popover** to v0.0.15
+
+
+
 ## [0.0.9](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.8...v0.0.9) (2019-02-25)
 
 
@@ -8,7 +20,10 @@
 
 ### Dependencies
 
-* **bump:** deps rb-base v0.0.7, form-control v0.0.6 and rb-popover v0.0.14 ([b45e720](https://github.com/rapid-build-ui/rb-radios/commit/b45e720))
+* **bump deps:** ([b45e720](https://github.com/rapid-build-ui/rb-radios/commit/b45e720))
+	* **form-control** to v0.0.6
+	* **rb-base** to v0.0.7
+	* **rb-popover** to v0.0.14
 
 
 
