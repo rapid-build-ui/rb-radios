@@ -25,26 +25,26 @@
 		`: null
 	}
 	<div class="radios">
-		${props.data.map((value, i) => html`
+		${props.data.map((item, i) => html`
 			<label
 				tabindex="${props.disabled ? -1 : 0}"
-				@keypress="${this._onkeypress.bind(this, value)}"
-				class="sublabel ${JSON.stringify(props.value) === JSON.stringify(value) ? 'active' : ''}">
+				@keypress="${this._onkeypress.bind(this, item)}"
+				class="sublabel ${JSON.stringify(props.value) === JSON.stringify(item) ? 'active' : ''}">
 				<b class="radio"></b>
 				${props.labelKey && typeof props.data[0] === 'object'
-					? value[props.labelKey]
-					: typeof value === 'object'
-						? JSON.stringify(value)
-						: value
+					? item[props.labelKey]
+					: typeof item === 'object'
+						? JSON.stringify(item)
+						: item
 				}
 				<input
 					hidden
 					type="radio"
 					tabindex="-1"
-					.value="${value}"
+					.value="${item}"
 					name="${props.name}"
-					@click="${this._onclick.bind(this, value)}"
-					?checked="${JSON.stringify(props.value) === JSON.stringify(value)}">
+					@click="${this._onclick.bind(this, item)}"
+					?checked="${JSON.stringify(props.value) === JSON.stringify(item)}">
 			</label>
 		`)}
 	</div>
