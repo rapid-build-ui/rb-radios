@@ -100,7 +100,7 @@ export class RbRadios extends FormControl(RbBase()) {
 		if (radio && radio.value !== value) radio.checked = false;
 	}
 	valueChanged(value) { // :boolean
-		const valueChanged = this.value !== value;
+		const valueChanged = JSON.stringify(this.value) !== JSON.stringify(value);
 		if (valueChanged) this.clearPrevCheckedRadio(value);
 		return valueChanged;
 	}
