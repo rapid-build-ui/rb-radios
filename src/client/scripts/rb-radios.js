@@ -13,9 +13,9 @@ export class RbRadios extends FormControl(RbBase()) {
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
 		this.validateValue();
-		Object.assign(this.rb.elms, {
-			focusElm:    this.shadowRoot.querySelector('.sublabel'),
-			formControl: this.shadowRoot.querySelector('input')
+		Object.assign(this.rb.formControl, {
+			elm:      this.shadowRoot.querySelector('input'),
+			focusElm: this.shadowRoot.querySelector('.sublabel'),
 		});
 		this._initSlotStates(); // see rb-base: private/mixins/slot.js
 	}
@@ -100,7 +100,7 @@ export class RbRadios extends FormControl(RbBase()) {
 		if (radio && radio.value !== value) radio.checked = false;
 	}
 	valueChanged(value) { // :boolean
-		const valueChanged = this.value !== value;
+		const valueChanged = JSON.stringify(this.value) !== JSON.stringify(value);
 		if (valueChanged) this.clearPrevCheckedRadio(value);
 		return valueChanged;
 	}
