@@ -1,3 +1,20 @@
+## [0.0.11](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.10...v0.0.11) (2019-05-09)
+
+
+### Bug Fixes
+
+* **value changed:** from not returning the right result when value is preselected ([59993f2](https://github.com/rapid-build-ui/rb-radios/commit/59993f2))
+
+
+### Dependencies
+
+* **bump deps:** ([671d94e](https://github.com/rapid-build-ui/rb-radios/commit/671d94e))
+	* **form-control** to v0.0.8
+	* **rb-base** to v0.0.9
+	* **rb-popover** to v0.0.16
+
+
+
 ## [0.0.10](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.9...v0.0.10) (2019-03-05)
 
 
