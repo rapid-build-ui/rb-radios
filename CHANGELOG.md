@@ -1,3 +1,20 @@
+## [0.0.12](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.11...v0.0.12) (2019-07-05)
+
+
+### Features
+
+* **version:** add to component properties accessible via this.version ([c602ffb](https://github.com/rapid-build-ui/rb-radios/commit/c602ffb))
+
+
+### Dependencies
+
+* **bump deps:** ([6f82219](https://github.com/rapid-build-ui/rb-radios/commit/6f82219))
+	* **form-control** to v0.0.9
+	* **rb-base** to v0.0.10
+	* **rb-popover** to v0.0.17
+
+
+
 ## [0.0.11](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.10...v0.0.11) (2019-05-09)
 
 
