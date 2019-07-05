@@ -10,6 +10,10 @@ import '../../rb-popover/scripts/rb-popover.js';
 export class RbRadios extends FormControl(RbBase()) {
 	/* Lifecycle
 	 ************/
+	constructor() {
+		super();
+		this.version = '0.0.11';
+	}
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
 		this.validateValue();
