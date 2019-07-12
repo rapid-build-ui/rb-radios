@@ -1,3 +1,12 @@
+## [0.0.13](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.12...v0.0.13) (2019-07-12)
+
+
+### Dependencies
+
+* **bump:** dep base v0.0.11
+
+
+
 ## [0.0.12](https://github.com/rapid-build-ui/rb-radios/compare/v0.0.11...v0.0.12) (2019-07-05)
 
 
