@@ -12,7 +12,7 @@ export class RbRadios extends FormControl(RbBase()) {
 	 ************/
 	constructor() {
 		super();
-		this.version = '0.0.13';
+		this.version = '0.0.14';
 	}
 	viewReady() { // :void
 		super.viewReady && super.viewReady();
